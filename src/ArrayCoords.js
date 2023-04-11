@@ -75,6 +75,6 @@ ArrayCoords.EAST = EAST;
 ArrayCoords.SOUTH = SOUTH;
 ArrayCoords.WEST = WEST;
 ArrayCoords.DIRECTIONS = DIRECTIONS;
-window.ArrayCoords = ArrayCoords;
+// window.ArrayCoords = ArrayCoords;
 
 export default ArrayCoords;
