@@ -1,0 +1,32 @@
+{
+  "name": "rocket-utility-belt",
+  "version": "0.1.0",
+  "description": "Small ECMAScript Modules for game development",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rocket-boots/rocket-utility-belt.git"
+  },
+  "keywords": [
+    "ESM",
+    "gamedev",
+    "game",
+    "web",
+    "js",
+    "tools"
+  ],
+  "author": "Luke Nickerson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rocket-boots/rocket-utility-belt/issues"
+  },
+  "homepage": "https://github.com/rocket-boots/rocket-utility-belt#readme",
+  "devDependencies": {
+    "rocket-boots-eslint": "github:rocket-boots/rocket-boots-eslint"
+  }
+}
