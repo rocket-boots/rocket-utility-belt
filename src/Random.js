@@ -18,6 +18,11 @@ class Random {
 		return Math.floor(Math.random() * n);
 	}
 
+	/** @returns a random # of radians between 0 and 2 PI */
+	static randomAngle() {
+		return Math.random() * Math.PI * 2;
+	}
+
 	static pickRandom(arr = []) {
 		return arr[Random.randomInt(arr.length)];
 	}

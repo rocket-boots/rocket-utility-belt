@@ -1,3 +1,4 @@
+import { PI, DEGREES_PER_RADIAN } from './constants.js';
 // Constants
 const NORTH = 0;
 const EAST = 1;
@@ -8,7 +9,7 @@ const Y = 1;
 const Z = 2;
 const DIRECTION_NAMES = Object.freeze(['North', 'East', 'South', 'West']);
 const DIRECTIONS = Object.freeze([NORTH, EAST, SOUTH, WEST]);
-const RADIANS = Object.freeze([0, Math.PI * 0.5, Math.PI, Math.PI * 1.5]);
+const FACING_RADIANS = Object.freeze([0, PI * 0.5, PI, PI * 1.5]);
 
 //       /^\ -y North
 // West   |
@@ -42,7 +43,7 @@ class ArrayCoords {
 
 	static getDirectionRadians(facingParam) {
 		const facing = ArrayCoords.normalizeDirection(facingParam);
-		return RADIANS[facing];
+		return FACING_RADIANS[facing];
 	}
 
 	static getDistance(coords1, coords2) {
@@ -63,6 +64,40 @@ class ArrayCoords {
 
 	static add(coords1, coords2) {
 		return [coords1[X] + coords2[X], coords1[Y] + coords2[Y], coords1[Z] + coords2[Z]];
+	}
+
+	static radiansToDegrees(radians) {
+		// return (radians * DEGREES_PER_RADIAN) - 90;
+		return (radians * DEGREES_PER_RADIAN);
+	}
+
+	static degreesToRadians(deg) {
+		// return (deg + 90) / DEGREES_PER_RADIAN;
+		return deg / DEGREES_PER_RADIAN;
+	}
+
+	// Note: currently only 2d
+	static cartesianToPolar([x = 0, y = 0]) {
+		const r = Math.sqrt(x * x + y * y);
+		const radians = ArrayCoords.cartesianToRadians([x, y]);
+		const degrees = ArrayCoords.radiansToDegrees(radians);
+		return { r, radians, theta: radians, degrees };
+	}
+
+	static polarToCartesian(r, radians) {
+		const x = r * Math.cos(radians);
+		const y = r * Math.sin(radians);
+		return [x, y];
+	}
+
+	// Note: currently only 2d
+	static cartesianToRadians([x = 0, y = 0]) {
+		return Math.atan2(y, x);
+	}
+
+	// Note: currently only 2d
+	static cartesianToDegrees([x = 0, y = 0]) {
+		return ArrayCoords.radiansToDegrees(ArrayCoords.cartesianToRadians([x, y]));
 	}
 }
 
