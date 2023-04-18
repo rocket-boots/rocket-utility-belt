@@ -14,8 +14,16 @@ class Random {
 		return Math.random();
 	}
 
+	static random() {
+		return Math.random();
+	}
+
 	static randomInt(n = 0) {
 		return Math.floor(Math.random() * n);
+	}
+
+	static randomBell(n = 1) {
+		return (Math.random() * n) - (Math.random() * n);
 	}
 
 	/** @returns a random # of radians between 0 and 2 PI */

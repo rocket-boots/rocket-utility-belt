@@ -1,3 +1,4 @@
+import clamp from './clamp.js';
 import { PI, DEGREES_PER_RADIAN } from './constants.js';
 // Constants
 const NORTH = 0;
@@ -54,6 +55,16 @@ class ArrayCoords {
 		);
 	}
 
+	/**
+	 * Get angle (in radians) from one 2d point to another;
+	 * e.g., From 0,0 to 0,1 (up) --> 0 ...to 1,0 (right) --> half pi ...to 0,-1 (below) --> pi
+	 */
+	static getAngleFacing(coords1, coords2) {
+		const dx = coords2[X] - coords1[X];
+		const dy = coords2[Y] - coords1[Y];
+		return Math.atan2(dx, dy);
+	}
+
 	static checkEqual(coords1, coords2) {
 		return (coords1[X] === coords2[X] && coords1[Y] === coords2[Y] && coords1[Z] === coords2[Z]);
 	}
@@ -64,6 +75,22 @@ class ArrayCoords {
 
 	static add(coords1, coords2) {
 		return [coords1[X] + coords2[X], coords1[Y] + coords2[Y], coords1[Z] + coords2[Z]];
+	}
+
+	static multiply(coords, m) {
+		return [
+			coords[X] * m,
+			coords[Y] * m,
+			coords[Z] * m,
+		];
+	}
+
+	static clampEachCoord(coords, min, max) {
+		return [
+			clamp(coords[X], min, max),
+			clamp(coords[Y], min, max),
+			clamp(coords[Z], min, max),
+		];
 	}
 
 	static radiansToDegrees(radians) {
