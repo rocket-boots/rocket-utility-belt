@@ -62,7 +62,7 @@ class ArrayCoords {
 	static getAngleFacing(coords1, coords2) {
 		const dx = coords2[X] - coords1[X];
 		const dy = coords2[Y] - coords1[Y];
-		return Math.atan2(dx, dy);
+		return Math.atan2(dy, dx);
 	}
 
 	static checkEqual(coords1, coords2) {
