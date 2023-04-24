@@ -1,6 +1,6 @@
 {
   "name": "rocket-utility-belt",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Small ECMAScript Modules for game development",
   "main": "src/index.js",
   "type": "module",

@@ -17,7 +17,7 @@ class Pool {
 		if (typeof v !== 'number') throw new Error('Cannot set to a non-number');
 		const ogValue = this.value;
 		this.value = Math.max(Math.min(this.max, v), this.min);
-		this.lastDelta = this.value - ogValue;
+		this.lastDelta += this.value - ogValue;
 		return this.value;
 	}
 
